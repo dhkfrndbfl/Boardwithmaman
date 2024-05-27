@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>게시글 목록</title>
+</head>
+<body>
+<h1>게시글 목록</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>제목</th>
+        <th>작성자</th>
+        <th>등록일</th>
+    </tr>
+    <tr th:each="board : ${boards}">
+        <td th:text="${board.id}"></td>
+        <td><a th:href="@{/view(id=${board.id})}" th:text="${board.title}"></a></td>
+        <td th:text="${board.name}"></td>
+        <td th:text="${#dates.format(board.createdAt, 'yyyy/MM/dd')}"></td>
+    </tr>
+</table>
+<a href="/writeform">새 글 작성</a>
+</body>
+</html>
